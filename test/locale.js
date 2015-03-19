@@ -15,6 +15,7 @@ test('locale', function (tape) {
   tape.test('fields', function (tape) {
     tape.plan(2);
 
+    Locale.clear();
     var locale = new Locale({language: 'it', country: 'IT'});
 
     tape.strictEqual(
@@ -25,13 +26,14 @@ test('locale', function (tape) {
     tape.strictEqual(
       locale.country,
       'IT',
-      'should have a language field');
+      'should have a country field');
 
   });
 
   tape.test('getLanguageName', function (tape) {
-    tape.plan(2);
+    tape.plan(4);
 
+    Locale.clear();
     Locale.addLanguages({
       it: {
         it: 'Italiano',
@@ -49,11 +51,29 @@ test('locale', function (tape) {
       'Inglese',
       'should return the language name');
 
+    Locale.addLanguages({
+      'it-IT': {
+        it: 'exact Italiano',
+        en: 'exact Inglese'
+      }
+    });
+
+    tape.strictEqual(
+      it_IT.getLanguageName(),
+      'exact Italiano',
+      'should return the exact base language name');
+
+    tape.strictEqual(
+      it_IT.getLanguageName(en_US.language),
+      'exact Inglese',
+      'should return the exact language name');
+
   });
 
   tape.test('getCountryName', function (tape) {
-    tape.plan(2);
+    tape.plan(4);
 
+    Locale.clear();
     Locale.addCountries({
       it: {
         IT: 'Italia',
@@ -64,33 +84,83 @@ test('locale', function (tape) {
     tape.strictEqual(
       it_IT.getCountryName(),
       'Italia',
-      'should return the base language name');
+      'should return the base country name');
 
     tape.strictEqual(
       it_IT.getCountryName(en_US.country),
       'Stati Uniti',
-      'should return the language name');
+      'should return the country name');
+
+    Locale.addCountries({
+      'it-IT': {
+        IT: 'exact Italia',
+        US: 'exact Stati Uniti'
+      }
+    });
+
+    tape.strictEqual(
+      it_IT.getCountryName(),
+      'exact Italia',
+      'should return the exact base country name');
+
+    tape.strictEqual(
+      it_IT.getCountryName(en_US.country),
+      'exact Stati Uniti',
+      'should return the exact country name');
 
   });
 
   tape.test('getLocaleName', function (tape) {
-    tape.plan(2);
+    tape.plan(4);
+
+    Locale.clear();
+    Locale.addLanguages({
+      it: {
+        it: 'Italiano',
+        en: 'Inglese'
+      }
+    });
+    Locale.addCountries({
+      it: {
+        IT: 'Italia',
+        US: 'Stati Uniti'
+      }
+    });
 
     tape.strictEqual(
       it_IT.getLocaleName(),
       'Italiano (Italia)',
-      'should return the base country name');
+      'should return the base locale name');
 
     tape.strictEqual(
       it_IT.getLocaleName(en_US),
       'Inglese (Stati Uniti)',
-      'should return the country name');
+      'should return the locale name');
+
+    Locale.addCountries({
+      'it-IT': {
+        IT: 'exact Italia',
+        US: 'exact Stati Uniti'
+      }
+    });
+
+    tape.strictEqual(
+      it_IT.getLocaleName(),
+      'Italiano (exact Italia)',
+      'should return the exact base locale name');
+
+    tape.strictEqual(
+      it_IT.getLocaleName(en_US),
+      'Inglese (exact Stati Uniti)',
+      'should return the exact locale name');
+
 
   });
 
   tape.test('getMessage', function (tape) {
-    tape.plan(1);
+    tape.plan(2);
 
+    Locale.clear();
     Locale.addMessages({
       it: {
         page: {
@@ -104,6 +174,18 @@ test('locale', function (tape) {
       'my message 1',
       'should return the a message');
 
+    Locale.addMessages({
+      'it-IT': {
+        page: {
+          message1: 'exact my message 1'
+        }
+      }
+    });
+
+    tape.strictEqual(
+      it_IT.getMessage('page.message1'),
+      'exact my message 1',
+      'should return the a message');
 
   });
 
