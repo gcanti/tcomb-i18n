@@ -30,6 +30,28 @@ test('locale', function (tape) {
 
   });
 
+  tape.test('toString', function (tape) {
+    tape.plan(1);
+
+    var locale = new Locale({language: 'it', country: 'IT'});
+
+    tape.strictEqual(
+      locale.toString(),
+      'it-IT',
+      'should return <language>-<country>');
+
+  });
+
+  tape.test('fromString', function (tape) {
+    tape.plan(1);
+
+    tape.strictEqual(
+      Locale.fromString('it-IT').toString(),
+      'it-IT',
+      'should return a locale');
+
+  });
+
   tape.test('getLanguageName', function (tape) {
     tape.plan(4);
 

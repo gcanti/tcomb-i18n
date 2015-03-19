@@ -1,2 +1,1 @@
-# simple-intl
-Simple Intl implementation (WIP)
+Simple i18n implementation (WIP)
