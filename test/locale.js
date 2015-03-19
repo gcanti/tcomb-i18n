@@ -73,4 +73,38 @@ test('locale', function (tape) {
 
   });
 
+  tape.test('getLocaleName', function (tape) {
+    tape.plan(2);
+
+    tape.strictEqual(
+      it_IT.getLocaleName(),
+      'Italiano (Italia)',
+      'should return the base country name');
+
+    tape.strictEqual(
+      it_IT.getLocaleName(en_US),
+      'Inglese (Stati Uniti)',
+      'should return the country name');
+
+  });
+
+  tape.test('getMessage', function (tape) {
+    tape.plan(1);
+
+    Locale.addMessages({
+      it: {
+        page: {
+          message1: 'my message 1'
+        }
+      }
+    });
+
+    tape.strictEqual(
+      it_IT.getMessage('page.message1'),
+      'my message 1',
+      'should return the a message');
+
+
+  });
+
 });

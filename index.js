@@ -1,3 +1,1 @@
-module.exports = {
-  locale: require('./lib/locale');
-};
+module.exports = require('./lib/locale');
