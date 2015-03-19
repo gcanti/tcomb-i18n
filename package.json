@@ -1,0 +1,48 @@
+{
+  "name": "tcomb-i18n",
+  "version": "0.1.0",
+  "description": "Simple i18n implementation",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc ./src/*.ts --outDir lib -w -m commonjs -t ES5 --noImplicitAny --noEmitOnError",
+    "test": "node ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gcanti/tcomb-i18n.git"
+  },
+  "author": {
+    "name": "Giulio Canti",
+    "email": "giulio.canti@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gcanti/tcomb-i18n/issues"
+  },
+  "homepage": "https://github.com/gcanti/tcomb-i18n",
+  "peerDependencies": {},
+  "dependencies": {
+    "tcomb": "^1.0.0"
+  },
+  "devDependencies": {
+    "tape": "^3.5.0"
+  },
+  "tags": [
+    "Intl",
+    "i18n",
+    "i17n",
+    "Internationalization",
+    "Localization",
+    "Locale",
+    "Locales"
+  ],
+  "keywords": [
+    "Intl",
+    "i18n",
+    "i17n",
+    "Internationalization",
+    "Localization",
+    "Locale",
+    "Locales"
+  ]
+}
