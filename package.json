@@ -22,6 +22,7 @@
   "homepage": "https://github.com/gcanti/tcomb-i18n",
   "peerDependencies": {},
   "dependencies": {
+    "lodash.template": "^3.3.2",
     "tcomb": "^1.0.0"
   },
   "devDependencies": {

@@ -1,1 +1,1 @@
-Simple i18n implementation (WIP)
+Simple i18n / i17n helpers (WIP)
