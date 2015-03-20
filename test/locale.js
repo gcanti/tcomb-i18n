@@ -30,25 +30,35 @@ test('locale', function (tape) {
 
   });
 
-  tape.test('toString', function (tape) {
-    tape.plan(1);
+  tape.test('toString(pattern?: string)', function (tape) {
+    tape.plan(2);
 
     var locale = new Locale({language: 'it', country: 'IT'});
 
     tape.strictEqual(
       locale.toString(),
       'it-IT',
-      'should return <language>-<country>');
+      'should return a string representation');
+
+    tape.strictEqual(
+      locale.toString('%s_%s'),
+      'it_IT',
+      'should handle the optional param `pattern`');
 
   });
 
-  tape.test('fromString', function (tape) {
-    tape.plan(1);
+  tape.test('fromString(str: string, separator?: string)', function (tape) {
+    tape.plan(2);
 
     tape.strictEqual(
       Locale.fromString('it-IT').toString(),
       'it-IT',
       'should return a locale');
+
+    tape.strictEqual(
+      Locale.fromString('it_IT', '_').toString(),
+      'it-IT',
+      'should handle the optional param `separator`');
 
   });
 
