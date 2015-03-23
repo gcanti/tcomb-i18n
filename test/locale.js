@@ -331,7 +331,7 @@ tape.test('formatDate', function (tape) {
 
   var date = new Date(1973, 10, 1);
 
-  tape.strictEqual(it_IT.formatDate(date), '1973-11-01');
+  tape.strictEqual(it_IT.formatDate(date), '11/01/1973'); // default to en-US
   tape.strictEqual(it_IT.formatDate(date, 'short'), '01/11/1973');
   tape.strictEqual(it_IT.formatDate(date, 'long'), '01, Novembre 1973');
 

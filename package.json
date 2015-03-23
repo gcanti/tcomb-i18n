@@ -20,10 +20,10 @@
     "url": "https://github.com/gcanti/tcomb-i18n/issues"
   },
   "homepage": "https://github.com/gcanti/tcomb-i18n",
-  "peerDependencies": {},
-  "dependencies": {
-    "lodash.template": "^3.3.2",
+  "peerDependencies": {
     "tcomb": "^1.0.0"
+  },
+  "dependencies": {
   },
   "devDependencies": {
     "tape": "^3.5.0"
