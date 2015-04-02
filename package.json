@@ -29,6 +29,7 @@
     "tape": "^3.5.0"
   },
   "tags": [
+    "tcomb",
     "Intl",
     "i18n",
     "i17n",
@@ -38,6 +39,7 @@
     "Locales"
   ],
   "keywords": [
+    "tcomb",
     "Intl",
     "i18n",
     "i17n",

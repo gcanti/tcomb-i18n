@@ -40,7 +40,7 @@ tape.test('toString(pattern?: string)', function (tape) {
     'should return a string representation');
 
   tape.strictEqual(
-    locale.toString('%s_%s'),
+    locale.toString('<%= language %>_<%= country %>'),
     'it_IT',
     'should handle the optional param `pattern`');
 
@@ -271,7 +271,7 @@ tape.test('parseNumber', function (tape) {
 });
 
 tape.test('formatInteger', function (tape) {
-  tape.plan(1);
+  tape.plan(2);
 
   Locale.clear();
   Locale.addNumbers({
@@ -281,7 +281,8 @@ tape.test('formatInteger', function (tape) {
     }
   });
 
-  tape.strictEqual(it_IT.formatInteger(100), '100');
+  tape.strictEqual(it_IT.formatInteger(1000), '1.000');
+  tape.strictEqual(it_IT.formatInteger(1000, false), '1000');
 
 });
 
